@@ -6,6 +6,8 @@ class Todo(models.Model):
     due_date = models.DateField()
     completed = models.BooleanField()
     favourite = models.BooleanField()
+    attachement = models.FileField(upload_to='public',null=True)
+
     list = models.ForeignKey('TodoList',null=False, on_delete=models.CASCADE)
 
     def __str__(self):
