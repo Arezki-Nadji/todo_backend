@@ -38,19 +38,27 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
     'django_filters',
+    'corsheaders',
+    'drf_yasg',
     'todo',
+    'user_mangement'
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
-        'rest_framework.filters.SearchFilter'
-    ]
+        'rest_framework.filters.SearchFilter',
+    ],
+    
+    
 }
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -132,3 +140,15 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOWED_ORIGINS = [
+        'http://localhost:4200'
+]
+
+CROS_ALLOW_CREDENTIALS = True
+ACCOUNT_LOGOUT_ON_GET = True
+
+SWAGGER_SETTINGS = {
+    'LOGIN_URL' : '/admin/login/',
+    'LOGOUT_URL': '/admin/logout/'
+}
